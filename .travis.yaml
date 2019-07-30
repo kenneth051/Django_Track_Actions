@@ -2,6 +2,7 @@ language: python
 
 python:
   - "3.6"
+  - "3.5"
 
 services:
   - postgresql
@@ -10,10 +11,9 @@ env:
   - DATABASE_URL = 'postgres://postgres@localhost/test_db'
 
 install:
-  - pip install pipenv
-  - pipenv install
-  - pipenv install coverage
-  - pipenv install coveralls
+  - pip install -r requirements.txt
+  - pip install coverage
+  - pip install coveralls
 
 addons:
   postgresql: 9.6
