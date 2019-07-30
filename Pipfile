@@ -13,6 +13,8 @@ python-decouple = "*"
 psycopg2 = "*"
 pyjwt = "*"
 coverage = "*"
+dotenv = "*"
+python-dotenv = "*"
 
 [requires]
 python_version = "3.6"
