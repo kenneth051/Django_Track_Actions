@@ -5,12 +5,10 @@ from rest_framework.routers import SimpleRouter
 from Actions.views import UserView, LoginView, TodoView, HistoryView
 
 router = SimpleRouter()
-router.register("users",UserView,"users")
-router.register("todo", TodoView,"todo")
-router.register("history", HistoryView,"history")
+router.register("users", UserView, "users")
+router.register("todo", TodoView, "todo")
+router.register("history", HistoryView, "history")
 
-urlpatterns = [
-    path('users/login/', LoginView.as_view()),
-]
+urlpatterns = [path("users/login/", LoginView.as_view())]
 
 urlpatterns += router.urls

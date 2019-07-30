@@ -1,0 +1,31 @@
+language: python
+
+python:
+  - "3.6"
+
+services:
+  - postgresql
+
+env:
+  - DATABASE_URL = 'postgres://postgres@localhost/test_db'
+
+install:
+  - pip install pipenv
+  - pipenv install
+  - pipenv install coverage
+  - pipenv install coveralls
+
+addons:
+  postgresql: 9.6
+
+before_script:
+  - psql -c 'CREATE DATABASE test_db;' -U postgres
+
+script:
+  - python manage.py makemigrations 
+  - python manage.py migrate
+  - coverage run --source=Actions/ manage.py test
+  - coverage report -m
+
+after_success:
+  - coveralls
